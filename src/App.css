@@ -1,0 +1,11 @@
+body{
+    background: rgb(32, 35, 41);
+}
+.title{
+    margin: 0px;
+    color: #fff;
+    border: none;
+    font-weight: 900;
+    z-index: 1;
+    font-size: 5.625rem;
+}
