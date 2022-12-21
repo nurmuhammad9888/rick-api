@@ -1,31 +1,24 @@
+import { Route, Routes } from 'react-router';
 import './App.css';
-import {useEffect, useState} from 'react';
-import { Reck } from './components/Reckapi/Reck';
-
+import { Header } from './components/Header/Header';
+import { Character } from './pages/Character/Character';
+import { Episode } from './pages/Episode/Episode';
+import { Location } from './pages/Location/Location';
+import { SingilPage } from './pages/SingilPage/SingilPage';
 
 function App() {
-  const [data, statData] = useState([])
+	return (
+		<>
+			<Header />
+      <Routes>
+        <Route path='/' element={<Character/>}/>
+        <Route path='/location' element={<Location/>}/>
+        <Route path='/episode' element={<Episode/>}/>
+        <Route path='/id/:id' element={<SingilPage/>} />
 
-  useEffect(() =>{
-    fetch("https://rickandmortyapi.com/api/character/?page=1")
-    .then(res => res.json())
-    .then(data => {
-      statData(data.results)
-    })
-
-}, [])
-  return (
-    <div className="container">
-      <h1 className='text-center mt-4 title'>The Rick and Morty</h1>
-      <ul className='card-list list-unstyled d-flex flex-wrap mt-5'>
-        {
-          data.map(el =>(
-              <Reck image={el.image} name={el.name} status={el.status} species={el.species} location={el.location.name} gender={el.gender} />
-          ))
-        }
-      </ul>
-    </div>
-  );
+      </Routes>
+		</>
+	);
 }
 
 export default App;
